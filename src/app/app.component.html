@@ -2,9 +2,9 @@
 
 <div class="container">
   <aside class="sidebar">
-    <app-filter></app-filter>
+    <app-filter (formValueChanges)="fetchFlats($event)"></app-filter>
   </aside>
   <main class="content">
-    <app-list></app-list>
+    <app-list [flatsList]="flatsList"></app-list>
   </main>
 </div>
