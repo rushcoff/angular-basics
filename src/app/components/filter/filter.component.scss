@@ -1,0 +1,14 @@
+.filter {
+  display: grid;
+  grid-row-gap: 1rem;
+}
+
+.form-group {
+  background-color: white;
+  padding: 1.5rem;
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.1);
+
+  h3 {
+    margin: 0 0 1rem 0;
+  }
+}
