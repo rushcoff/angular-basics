@@ -2,7 +2,7 @@
   <div class="flat-item" *ngFor="let flat of flatsList | async">
     <span>{{ flat.category.name }} {{ flat.id }}</span>
     <h2>г.{{ flat.city.name }}, {{ flat.address }}</h2>
-    <span>{{ flat.square }} кв.м.</span>
+    <span *ngIf="flat.square">{{ flat.square }} кв.м.</span>
     <span>{{ flat.price }} ₽</span>
   </div>
 </div>

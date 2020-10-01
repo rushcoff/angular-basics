@@ -37,8 +37,8 @@ export class FilterComponent implements OnInit {
   get citiesList(): City[] {
     return [
       { key: 'Все города', value: '' },
-      { key: 'Москва', value: 'mocsow' },
-      { key: 'Тюмень', value: 'tyumen' },
+      { key: 'Москва', value: '1' },
+      { key: 'Тюмень', value: '8' },
     ];
   }
 
