@@ -1,5 +1,8 @@
 <div class="flat-list">
-  <div class="flat-item" *ngFor="let flat of flatsList | async">
+  <h4 class="not-found" *ngIf="!flatsList.length">
+    По данному запросу ничего не найдено
+  </h4>
+  <div class="flat-item" *ngFor="let flat of flatsList">
     <span>{{ flat.category.name }} {{ flat.id }}</span>
     <h2>г.{{ flat.city.name }}, {{ flat.address }}</h2>
     <span *ngIf="flat.square">{{ flat.square }} кв.м.</span>

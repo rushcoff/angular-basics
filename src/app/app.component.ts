@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Flat, FlatsService, FetchFlatsParams } from './services/flats.service';
 
 @Component({
@@ -7,14 +7,23 @@ import { Flat, FlatsService, FetchFlatsParams } from './services/flats.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  flatsList: Observable<Flat[]>;
+export class AppComponent implements OnInit, OnDestroy {
+  flatsSub: Subscription;
+  flatsList: Flat[] = [];
 
-  constructor(private flatsService: FlatsService) {
+  constructor(private flatsService: FlatsService) {}
+
+  ngOnInit(): void {
     this.fetchFlats();
   }
 
+  ngOnDestroy(): void {
+    this.flatsSub.unsubscribe();
+  }
+
   fetchFlats(params?: FetchFlatsParams): void {
-    this.flatsList = this.flatsService.fetchFlats(params);
+    this.flatsSub = this.flatsService.fetchFlats(params).subscribe((res) => {
+      this.flatsList = res;
+    });
   }
 }
